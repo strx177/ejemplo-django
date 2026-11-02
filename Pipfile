@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+pylint = "*"
+pylint-django = "*"
+pylint-celery = "*"
+pillow = "*"
+django-crispy-forms = "*"
+crispy-bootstrap5 = "*"
+python-dotenv = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"

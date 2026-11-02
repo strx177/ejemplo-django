@@ -1,0 +1,6 @@
+.format-img {
+    width: 250px;
+    height: 350px;
+    /* recorta parte de la imagen para evitar que se desforme */
+    object-fit: cover;
+}

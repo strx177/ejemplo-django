@@ -1,0 +1,52 @@
+{% extends "catalogo/base.html" %}
+{% block content %}
+<h1 class="mb-4">Lista de Editoriales</h1>
+<!-- Botón para crear una nueva editorial -->
+<div class="mb-3 text-end">
+  <a href="{% url 'crear_editoriales' %}" class="btn btn-success">
+    <i class="bi bi-plus-circle"></i> Nueva Editorial
+  </a>
+</div>
+
+<table class="table table-striped table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Nombre</th>
+      <th>País</th>
+      <th>Sitio web</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for e in editoriales %}
+    <tr>
+      <td>{{ e.nombre }}</td>
+      <td>{{ e.pais|default:'-' }}</td>
+      <td>
+        <!-- si tiene sitio web se muestra como enlace en una pestaña nueva -->
+        {% if e.sitio_web %}
+        <a href="{{ e.sitio_web }}" target="_blank">{{ e.sitio_web }}</a>
+        {% else %}
+        -
+        {% endif %}
+      </td>
+      <td>
+        <!-- Editar -->
+        <a href="{% url 'editar_editoriales' e.id %}" class="btn btn-warning btn-sm" title="Editar">
+          <i class="bi bi-pencil"></i>
+        </a>
+        <!-- Eliminar: lleva a la página de confirmación -->
+        <a href="{% url 'eliminar_editoriales' e.id %}" class="btn btn-danger btn-sm" title="Eliminar">
+          <i class="bi bi-trash"></i>
+        </a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="4" class="text-center">No hay editoriales registradas</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

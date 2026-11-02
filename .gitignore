@@ -1,0 +1,19 @@
+# Variables de entorno (contiene la SECRET_KEY)
+.env
+
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+
+# Base de datos local
+db.sqlite3
+
+# Archivos subidos por usuarios (portadas)
+media/
+
+# Configuración del editor
+.vscode/
+
+# Archivos estáticos recolectados con collectstatic
+staticfiles/
+

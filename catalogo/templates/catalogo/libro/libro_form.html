@@ -1,0 +1,17 @@
+{% extends "catalogo/base.html" %}
+{% block content %}
+<h1>{{accion}} Libro</h1>
+<!-- para que el navegador envie la imagen en formulario libro -->
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <!-- carga las etiquetas por django-crispy-forms y
+    utilizar el filtro crispy para dar el formato del formulario -->
+    {% load crispy_forms_tags %}
+    <!-- renderizar el formulario enviado desde la vista, 
+     crispy genera automaticamente el html y estilos -->
+    {{ form|crispy }}
+     <button type="submit" class="btn btn-primary">Guardar</button>
+  <a href="{% url 'lista_libros' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+{% endblock %}

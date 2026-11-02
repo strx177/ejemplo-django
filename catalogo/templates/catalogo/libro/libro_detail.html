@@ -1,0 +1,52 @@
+{% extends "catalogo/base.html" %}
+{% load static %}
+{% block content %}
+<h1 class="mb-4">Detalle del Libro</h1>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <div class="row">
+      <!-- Portada del libro -->
+      <div class="col-md-3 text-center mb-3">
+        {% if obj.portada %}
+        <img src="{{ obj.portada.url }}" class="img-fluid rounded" alt="{{ obj.titulo }}">
+        {% else %}
+        <img src="{% static 'libro/imagen_por_defecto.png' %}" class="img-fluid rounded" alt="Imagen por defecto">
+        {% endif %}
+      </div>
+
+      <!-- Datos principales -->
+      <div class="col-md-9 d-flex flex-column">
+        <p class="text-muted small mb-1">ISBN: {{ obj.isbn }}</p>
+        <h2 class="card-title">{{ obj.titulo }}</h2>
+        <p class="text-muted mb-2">{{ obj.autor.nombre }} {{ obj.autor.apellido }}</p>
+
+        <!-- Categorias del libro -->
+        <div class="mb-3">
+          {% for c in obj.categoria.all %}
+          <span class="badge bg-secondary">{{ c.nombre }}</span>
+          {% empty %}
+          <span class="badge bg-light text-dark">Sin Categoria</span>
+          {% endfor %}
+        </div>
+
+        <hr>
+        <p class="mb-1"><strong>Publicado en:</strong> {{ obj.anio_publicacion }}</p>
+        <p class="mb-3"><strong>Editorial:</strong> {{ obj.editorial.nombre }}</p>
+
+        <!-- Descripcion del libro -->
+        <h5>Sinopsis</h5>
+        <p>{{ obj.descripcion }}</p>
+
+        <!-- Boton volver, mt-auto lo empuja al final de la columna -->
+        <div class="text-end mt-auto">
+          <a href="{% url 'lista_libros' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Volver
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
