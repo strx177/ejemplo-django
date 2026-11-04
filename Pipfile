@@ -4,14 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
 pylint = "*"
 pylint-django = "*"
 pylint-celery = "*"
-pillow = "*"
-django-crispy-forms = "*"
-crispy-bootstrap5 = "*"
-python-dotenv = "*"
+asgiref = "==3.13.0"
+crispy-bootstrap5 = "==2026.9"
+django = "==6.1.2"
+django-crispy-forms = "==2.7"
+pillow = "==13.0.0"
+python-dotenv = "==1.2.4"
+sqlparse = "==0.6.0"
+tzdata = "==2026.5"
 
 [dev-packages]
 
