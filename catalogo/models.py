@@ -37,6 +37,10 @@ class Libro(models.Model):
     editorial = models.ForeignKey(Editorial, on_delete=models.PROTECT, related_name='libros')
     #relacion uno a muchos cada libro pertenece a un solo autor
     autor = models.ForeignKey(Autor, on_delete=models.PROTECT, related_name='libros')
+    #por defecto, el precio será 0 si no se especifica un valor
+    precio = models.PositiveIntegerField(default=0)
+    #por defecto, el stock será 0 si no se especifica un valor
+    stock = models.PositiveIntegerField(default=0)
     
     def __str__(self):
         return self.titulo

@@ -64,6 +64,10 @@ def detalle_libros(request, pk):
     libro = get_object_or_404(Libro, pk=pk)
     return render(request, 'catalogo/libro/libro_detail.html', {'obj': libro})
 
+def lista_card_libros(request):
+    libros = Libro.objects.all()
+    return render(request, 'catalogo/libro/libro_card_list.html', {'libros': libros})
+
 #CATEGORIAS
 def lista_categorias(request):
     #obtener todas las categorias de la bd

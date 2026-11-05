@@ -29,7 +29,7 @@ def registrar_usuario(request):
             form.save()
             return redirect('iniciar_sesion')
     else:
-        form = CustomUserCreationForm(request)
+        form = CustomUserCreationForm()
     return render(request, 'registro/registrar_usuario.html', {'form':form})
 
 def cerrar_sesion(request):
