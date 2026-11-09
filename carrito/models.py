@@ -32,7 +32,7 @@ class Pedido(models.Model):
         ('CANC', 'Cancelado'),
     ]
     usuario = models.ForeignKey(Perfil, on_delete=models.CASCADE)
-    decha = models.DateTimeField(auto_now_add=True)
+    fecha = models.DateTimeField(auto_now_add=True)
     total = models.PositiveIntegerField(default=0)
     estado = models.CharField(max_length=4, choices=ESTADOS, default='Pendiente')
     def __str__(self):

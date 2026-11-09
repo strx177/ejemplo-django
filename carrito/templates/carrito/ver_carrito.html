@@ -1,0 +1,57 @@
+{% extends 'catalogo/base.html' %}
+{% block content %}
+<h1>Tu carrito</h1>
+{% if items %}
+<table class="table align-middle text-center">
+    <thead class="table-dark">
+        <tr>
+            <th>Libro</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.libro.titulo }}</td>
+            <td>${{ item.libro.precio }}</td>
+            <td>
+                <div class="d-flex justify-content-center align-items-center gap-2">
+                    {# Botón para disminuir: se deshabilita en 1 #}
+                    {% if item.cantidad > 1 %}
+                        <a href="{% url 'disminuir_item' item.id %}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-dash"></i></a>
+                    {% else %}
+                        <a class="btn btn-outline-secondary btn-sm disabled" aria-disabled="true"><i class="bi bi-dash"></i></a>
+                    {% endif %}
+
+                    <span class="px-2 fw-bold">{{ item.cantidad }}</span>
+
+                    {# Botón para aumentar: se deshabilita al llegar al stock #}
+                    {% if item.cantidad < item.libro.stock %}
+                        <a href="{% url 'incrementar_item' item.id %}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-plus"></i></a>
+                    {% else %}
+                        <a class="btn btn-outline-secondary btn-sm disabled" aria-disabled="true"><i class="bi bi-plus"></i></a>
+                    {% endif %}
+                </div>
+            </td>
+            <td>${{ item.subtotal }}</td>
+            <td>
+                <a href="{% url 'eliminar_item' item.id %}" class="btn btn-danger btn-sm">
+                    <i class="bi bi-trash"></i> Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-between align-items-center mt-3">
+    <h4><strong>Total:</strong> ${{ total }}</h4>
+    <a href="#" class="btn btn-success"><i class="bi bi-credit-card"></i> Pagar con Webpay</a>
+</div>
+{% else %}
+    <p>No hay libros en el carrito.</p>
+{% endif %}
+{% endblock %}

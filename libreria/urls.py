@@ -8,6 +8,7 @@ urlpatterns = [
     #incluir todas las urls de las aplicaciones
     path('', include('catalogo.urls')),
     path('cuentas/', include('registro.urls')),
+    path('carrito/', include('carrito.urls')),
 ]
 #permitir acceder desde el navegador a las imagenes u 
 # otros archivos guardados en MEDIA_ROOT
