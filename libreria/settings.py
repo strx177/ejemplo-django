@@ -18,6 +18,12 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS','127.0.0.1,localhost').split(',')
 
+# Lee cada variable; si no existe, queda None
+WEBPAY_COMMERCE_CODE = os.getenv('WEBPAY_COMMERCE_CODE')
+WEBPAY_API_KEY = os.getenv('WEBPAY_API_KEY')
+# Si no está definida, usamos TEST por defecto
+WEBPAY_ENV = os.getenv('WEBPAY_ENV', 'TEST')
+
 
 # Application definition
 

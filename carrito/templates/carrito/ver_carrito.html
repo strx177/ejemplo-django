@@ -49,7 +49,7 @@
 
 <div class="d-flex justify-content-between align-items-center mt-3">
     <h4><strong>Total:</strong> ${{ total }}</h4>
-    <a href="#" class="btn btn-success"><i class="bi bi-credit-card"></i> Pagar con Webpay</a>
+    <a href="{% url 'iniciar_pago' %}" class="btn btn-success"><i class="bi bi-credit-card"></i> Pagar con Webpay</a>
 </div>
 {% else %}
     <p>No hay libros en el carrito.</p>
